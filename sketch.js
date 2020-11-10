@@ -35,10 +35,22 @@ function draw() {
   rectangle.display();
   pop();
 
+  push();
+  fill(255);
+  textFont("Crimson Pro");
+  textSize(40);
+
+  text("The Love Calculator",20, height/2 -20);
+
+  textSize(20);
+  text("Write in the spaces above the names of the lovers",20, (height/2) +20);
+  text("Drag the reptangle in the red area and release",20, (height/2) +45);
+  text("Than refresh to try with an other couple",20, (height/2) +120);
+  pop();
 
   if(dragCompleted == true) {
-
     rectangle.printResult();
+    noLoop();
   }
 }
 
@@ -70,7 +82,9 @@ class Rect {
   }
 
   dragged() {
+    if(mouseX>width/4) {
     this.x = mouseX;
+    }
     this.y = mouseY;
     this.color = 200;
   }
@@ -84,22 +98,27 @@ class Rect {
     } else {this.color = 255;}
   }
 
+// funzione per il risultato
   printResult() {
     push();
     fill(255);
     textSize(30);
+    textFont("Crimson Pro");
 
     textAlign(CENTER, CENTER);
-    text("The compatibility between " +firstName+ " and " +secondName+ " is:",3*width/4, height/3);
+    text("The compatibility between",3*width/4, height/3 -50);
+    text(firstName+ " and " +secondName+ " is:",3*width/4, (height/3) - 10);
     pop();
 
     push();
     fill(255);
     textSize(100);
+    textFont("Crimson Pro");
 
     textAlign(CENTER, CENTER);
     text(myText + "%",3*width/4, height/2);
     pop();
+
   }
 
 }
